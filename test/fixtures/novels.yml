@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  novel_id: 1
+  title: MyString
+  genre: MyText
+  story: MyString
+  thought: MyString
+
+two:
+  novel_id: 1
+  title: MyString
+  genre: MyText
+  story: MyString
+  thought: MyString
