@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="">
+            <h1>Novels#show</h1>
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Genre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><%= @novel.title %></td>
+                        <td><%= @novel.genre %></td>
+                    </tr>
+                    <tr>
+                        <th>いいね</th>
+                        <td>♥</td>
+                    </tr>
+                    <tr>
+                        <th>評価</th>
+                        <td>☆</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <% if @novel.user.image.attached? %>
+                                <%= image_tag @novel.user.image, size: "200x200" %>
+                            <% else %>
+                                <%= image_tag "no_image.png", size: "200x200" %>
+                            <% end %>
+                        </td>
+                        <td><%= @novel.user.name %></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Story</th>
+                        <td><%= @novel.story %></td>
+                    </tr>
+                    <tr>
+                        <th>Thought</th>
+                        <td><%= @novel.thought %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <% if current_user == @user %>
+                <%= link_to "編　集", edit_novel_path(@novel), class: "btn btn-secondary btn-lg" %>
+                <%= link_to "削　除", novels_path, data: { turbo_method: :destroy, turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-lg" %>
+            <%= else %>
+                <%= link_to "レビュー", "#", class: "btn" %>
+                <%= link_to "ブックマーク", "#", class: "btn" %>
+            <% end %>
+        </div>
+    </div>
+</div>

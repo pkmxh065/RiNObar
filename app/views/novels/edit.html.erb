@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="">
+            <h1>Novel edit</h1>
+        </div>
+        <div class="col-md-6 mt-2">
+            <%= form_with model: @novel do |novel| %>
+                <div class="mb-4">
+                    <%= novel.label :title, "タイトル", class: "form-label" %>
+                    <%= novel.text_field :title, class: "form-control" %>
+                </div>
+                <div class="w-100 mb-4">
+                    <%= novel.label :genre, "ジャンル", class: "form-label" %><br>
+                    <div class="d-flex gap-2 w-100">
+                        <%= novel.select :genre, [
+                            ["異世界", "isekai"],
+                            ["ラブコメ", "love_comedy"],
+                            ["バトル","buttle"],
+                            ["ミステリー","mystery"],
+                            ["その他","other"]
+                        ], {}, { class: "form-select w-50" } %>
+                        <%= novel.select :genre, [
+                            ["ファンタジー","fantasy"],
+                            ["転生","tensei"],
+                            ["学園","school"],
+                            ["日常","slice_of_life"],
+                            ["SF","sf"],
+                            ["アクション","action"],
+                            ["サスペンス","suspense"],
+                            ["ホラー","horror"],
+                            ["歴史・時代","historical"],
+                            ["その他","other"]
+                        ], {}, { class:"form-select w-50" } %>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <%= novel.label :story, "ストーリー", class: "form-label" %>
+                    <%= novel.text_area :story, class: "form-control" %>
+                </div>
+                <div class="mb-4">
+                    <%= novel.label :thought, "感想", class: "form-label" %>
+                    <%= novel.text_area :thought, class: "form-control" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

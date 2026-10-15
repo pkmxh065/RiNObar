@@ -1,0 +1,28 @@
+<header class="shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container mt-5">
+            <a class="navbar-brand" p-2 href="/">
+                RiNObar
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <% if authenticated? %>
+                        <li class="nav-item"><%= link_to "About", about_path, class: "nav-link" %></li>
+                        <li  class="nav-item"><%= link_to "マイページ", user_path(Current.user), class: "nav-link" %></li>
+                        <li class="nav-item"><%= link_to "Novels", novels_path, class: "nav-link" %></li>
+                        <li class="nav-item"><%= link_to "Log out", session_path, data: { turbo_method: :delete }, class: "nav-link" %></li>
+                    <% else %>
+                        <li class="nav-item"><%= link_to "About", about_path, class: "nav-link" %></li>
+                        <li class="nav-item"><%= link_to "Sign in", new_user_path, class: "nav-link" %></li>
+                        <li class="nav-item"><%= link_to "Log in", new_session_path, class: "nav-link" %></li>
+                        <li class="nav-item"><%= link_to "Novels", novels_path, class: "nav-link" %></li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

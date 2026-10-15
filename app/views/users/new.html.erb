@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row d-flex mt-3 mb-5">
+        <div class="justify-content-center mt-5 border border-secondary p-4 shadow-sm rounded-2" style="max-width: 400px; margin: 0 auto;">
+            <div class="text-center">
+                <h2 class="d-inline-block bg-secodary-subtle text-dark px-2 font-weight-bold mt-3 mb-3">Sign up</h2>
+            </div>
+            <div>
+                <%= form_with model: @user, url: users_path do |f| %>
+                    <% if @user.errors.any? %>
+                        <div id="error_explanation">
+                            <h3><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h3>
+                            <ul>
+                                <% @user.errors.full_messages.each do |msg| %>
+                                    <li><%= msg %></li>
+                                <% end %>
+                            </ul>
+                        </div>
+                    <% end %>
+                    <div class="mb-3">
+                        <%= f.label :name, class: "form-label" %><br>
+                        <%= f.text_field :name, autofocus: true, class: "form-control w-100" %>
+                    </div>
+                    <div class="mb-3">
+                        <%= f.label :email_address, class: "form-label" %>
+                        <%= f.email_field :email_address, class: "form-control w-100" %>
+                    </div>
+                    <div class="mb-3">
+                        <%= f.label :password, class: "form-label" %><br>
+                        <%= f.password_field :password, class: "form-control w-100" %>
+                    </div>
+                    <div class="mb-3">
+                        <%= f.label :password_confirmation, class: "form-label" %><br>
+                        <%= f.password_field :password_confirmation, class: "form-control w-100" %>
+                    </div>
+                    <div class="actions mb-2">
+                        <%= f.submit "Sign up", class: "btn btn-success w-100" %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

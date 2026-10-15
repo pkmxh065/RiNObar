@@ -1,0 +1,18 @@
+<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+
+<div class="container">
+  <div class="row justify-content-center mt-5">
+      <div class="text-center">
+        <h1>Forgot your password?</h1>
+      </div>
+      <%= form_with url: passwords_path do |f| %>
+        <div class="mb-2">
+          <%= f.label :Email_address %>
+        </div>
+        <div class="mb-4">
+          <%= f.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %>
+        </div>
+        <%= f.submit "Email reset instructions" %>
+      <% end %>
+  </div>
+</div>

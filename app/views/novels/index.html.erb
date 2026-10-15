@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row d-flex justify-content-center mt-5">
+        <div class="m-3">
+            <h1>Novels index</h1>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Genre</th>
+                    <th>User</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @novels.each do %>
+                    <tr>
+                        <td><%= @novel.title %></td>
+                        <td><%= @novel.genre %></td>
+                        <td><%= @novel.user_id %></td>
+                        <td><%= link_to "詳　細", novel_path(@novel), class: "btn btn-info" %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <%= paginate @novels %>
+    </div>
+</div>

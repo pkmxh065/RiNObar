@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="row">
+        <div class="m-2">
+            <h1>Users info</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="mt-2">
+                    <% if @user.image.attached? %>
+                        <%= image_tag @user.image, size: "300x300", class: "img-thumbnall mb-2" %>
+                    <% else %>
+                        <%= image_tag "no_image.png", size: "300x300" %>
+                    <% end %>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-center mt-2">
+                    <p><strong>user</strong></p>
+                    <span class="ms-5"><%= @user.name %></span>
+                </div>
+                <div class="text-center">
+                    <hr>
+                    <p><strong>Introduction</strong></p>
+                </div>
+                <div class="mt-2">
+                    <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block w-100" do %>
+                        <i class="fas fa-user-cog"></i>
+                    <% end %>
+                    <div class="mt-2"><%= @user.introduction %></div>
+                </div>
+            </div>
+            <div class="col-md-9 ps-md-5">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <%= link_to about_path, class: "text-decoration-none text-dark" do %>
+                            <div class="border rounded p-4 text-center bg-light w-100 d-flex flex-column" style="min-height: 150px; display: flex; aligin-items:center; justify-content: center;">
+                                <h3>About</h3><br>
+                                <p>—　about　—</p>
+                            </div>
+                        <% end %>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <%= link_to new_novel_path, class: "text-decoration-none text-dark" do %>
+                            <div class="border rounded p-4 text-center bg-light w-100 d-flex flex-column" style="min-height: 150px; display: flex; aligin-items:center; justify-content: center;">
+                                <h3>Posts</h3><br>
+                                <p>—　投稿　—</p>
+                            </div>
+                        <% end %>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <%= link_to novels_path, class: "text-decoration-none text-dark" do %>
+                            <div class="border rounded p-4 text-center bg-light w-100 d-flex flex-column" style="min-height: 150px; display: flex; aligin-items:center; justify-content: center;">
+                                <h3>Novels</h3><br>
+                                <p>—　ライトノベル　—</p>
+                            </div>
+                        <% end %>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <%= link_to "#", class: "text-decoration-none text-dark" do %>
+                            <div class="border rounded p-4 text-center bg-light w-100 d-flex flex-column" style="min-height: 150px; display: flex; aligin-items:center; justify-content: center;">
+                                <h3>Review</h3><br>
+                                <p>—　レビュー　—</p>
+                            </div>
+                        <% end %>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <%= link_to "#", class: "text-decoration-none text-dark" do %>
+                            <div class="border rounded p-4 text-center bg-light w-100 d-flex flex-column" style="min-height: 150px; display: flex; aligin-items:center; justify-content: center;">
+                                <h3>Favorite</h3><br>
+                                <p>—　お気に入り　―</p>
+                            </div>
+                        <% end %>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <%= link_to unsubscribe_path, class: "text-decoration-none text-dark" do %>
+                            <div class="border rounded p-4 text-center bg-light w-100 d-flex flex-column" style="min-height: 150px; display: flex; aligin-items:center; justify-content: center;">
+                                <h3>Leave</h3><br>
+                                <p>—　退会　—</p>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
