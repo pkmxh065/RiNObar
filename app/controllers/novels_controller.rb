@@ -6,7 +6,7 @@ class NovelsController < ApplicationController
   end
 
   def index
-    @novels = Novel.page(params[:page])
+    @novels = Novel.all
   end
 
   def show
@@ -28,8 +28,8 @@ class NovelsController < ApplicationController
   end
 
   def update
-    novel = Novel.find(params[:id])
-    if novel.update(novel_params)
+    @novel = Novel.find(params[:id])
+    if @novel.update(novel_params)
       redirect_to novels_path
     else
       render edit, status: :unprocessable_entity
@@ -37,11 +37,9 @@ class NovelsController < ApplicationController
   end
 
   def destroy
-    novel = Novel.find(params[:id])
-    if novel.destroy
+    @novel = Novel.find(params[:id])
+    if @novel.destroy
       redirect_to novels_path, notice: "削除が完了しました。"
-    else
-      render show, status: :unprocessable_entity
     end
   end
 
