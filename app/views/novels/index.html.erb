@@ -14,7 +14,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% @novels.each do %>
+                    <% @novels.each do |novel| %>
                         <tr>
                             <td><%= novel.title %></td>
                             <td><%= novel.genre %></td>
