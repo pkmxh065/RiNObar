@@ -16,9 +16,9 @@
                 <tbody>
                     <% @novels.each do %>
                         <tr>
-                            <td><%= @novel.title %></td>
-                            <td><%= @novel.genre %></td>
-                            <td><%= @novel.user_id %></td>
+                            <td><%= novel.title %></td>
+                            <td><%= novel.genre %></td>
+                            <td><%= novel.user_id %></td>
                             <td><%= link_to "詳　細", novel_path(@novel), class: "btn btn-info" %></td>
                         </tr>
                     <% end %>
