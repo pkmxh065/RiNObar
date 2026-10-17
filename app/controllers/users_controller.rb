@@ -1,11 +1,6 @@
 class UsersController < ApplicationController
-<<<<<<< HEAD
   allow_unauthenticated_access only: [ :new, :create, :index ]
   before_action :ensure_correct_user, only: [ :edit, :update ]
-=======
-  before_action :authenticate_user!
-  allow_unauthenticated_access only: [:new, :create, :index, :edit, :show]
->>>>>>> 821383488bbb5c1f0dc960fbcd89437938b58f7f
 
   def new
     @user = User.new
@@ -29,11 +24,7 @@ class UsersController < ApplicationController
       start_new_session_for @user
       redirect_to about_path, notice: "ユーザー登録が完了しました。"
     else
-<<<<<<< HEAD
       @user.errors.full_messages
-=======
-      p @user.errors.full_messages
->>>>>>> 821383488bbb5c1f0dc960fbcd89437938b58f7f
       render :new, status: :unprocessable_entity
     end
   end
