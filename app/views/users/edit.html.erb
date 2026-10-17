@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <h1 class="mb-5">User info</h1>
+            <%= form_with model: @user do |f| %>
+                <% if @user.errors.any? %>
+                        <div id="error_explanation">
+                            <h3><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h3>
+                            <ul>
+                                <% @user.errors.full_messages.each do |msg| %>
+                                    <li><%= msg %></li>
+                                <% end %>
+                            </ul>
+                        </div>
+                    <% end %>
+                <div class="mb-3">
+                    <%= f.label :name, "Name", class: "form-label" %><br>
+                    <%= f.text_field :name, class: "form-control w-100" %>
+                </div>
+                <div class="mb-3">
+                    <%= f.label :email_address, "email_address", class: "form-label" %><br>
+                    <%= f.email_field :email_address, class: "form-control w-100" %>
+                </div>
+                <div class="mb-3">
+                    <%= f.label :image, "Profile image", class: "form-label" %><br>
+                    <%= file_field :image, class: "form-control w-100" %>
+                </div>
+                <div class="mb-3">
+                    <%= f.label :introduction, "Introduction", class: "form-label" %><br>
+                    <%= f.text_area :introduction, class: "form-control w-100" %>
+                </div>
+                <div class="text-center mt-5 mb-2">
+                    <%= f.submit "Update", class: "btn btn-secondary btn-lg" %>
+                    <%= link_to "Leave", unsubscribe_user_path(@user), class: "btn btn-danger btn-lg" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

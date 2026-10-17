@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row d-flex mt-5">
+    <div class="justify-content-center mt-5 border border-secondary p-4 shadow-sm rounded-2" style="max-width: 400px; margin: 0 auto;">
+      <div class="text-center">
+        <h2 class="d-inline-block bg-secondary-subtle text-dark px-2 font-weight-bold mt-3 mb-5">Log in</h2>
+      </div>
+      <%= form_with url: session_path do |f| %>
+        <div class="mb-2">
+          <%= f.label :Email_address %>
+        </div>
+        <div class="mb-4">
+          <%= f.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address],
+           class: "w-100" %><br>
+        </div>
+        <div class="mb-2">
+          <%= f.label :Password %>
+        </div>
+        <div class="mb-4">
+          <%= f.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", class: "w-100", maxlength: 30 %><br>
+        </div>
+        <div class="text-center">
+          <%= f.submit "Log in", class: "btn btn-primary w-100" %>
+        </div>
+      <% end %>
+      <div class="text-center mt-5">
+        <%= link_to "Forgot password?", new_password_path %>
+      </div>
+    </div>
+  </div>
+</div>

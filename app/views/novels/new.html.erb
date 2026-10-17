@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-12 mt-2 mb-2">
+            <h1 class="text-center">Novels new</h1>
+        </div>
+        <div class="col-md-6 mt-2">
+            <%= form_with model: @novel do |novel| %>
+                <% if @novel.errors.any? %>
+                    <div class="alert alert-danger" style="color: red border: 1px solidred; padding: 10px; margin-bottom: 20px;">
+                        <h4 style="margin-top: 0;">入力内容にエラーがあります：</h4>
+                        <ul>
+                            <% @novel.errors.full_messages.each do |message|%>
+                                <li><%= message %></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                <% end %>
+                <div class="mb-4">
+                    <%= novel.label :title, "タイトル", class: "form-label" %>
+                    <%= novel.text_field :title, class: "form-control" %>
+                </div>
+                <div class="w-100 mb-4">
+                    <%= novel.label :genre, "ジャンル", class: "form-label" %><br>
+                    <div class="d-flex gap-2 w-100">
+                        <%= novel.select :genre_main, [
+                            ["異世界", "異世界"],
+                            ["ラブコメ", "ラブコメ"],
+                            ["バトル","バトル"],
+                            ["ミステリー","ミステリー"],
+                            ["その他","その他"]
+                        ], {}, { class: "form-select w-50" } %>
+                        <%= novel.select :genre_sub, [
+                            ["ファンタジー","ファンタジー"],
+                            ["転生","転生"],
+                            ["学園","学園"],
+                            ["日常","日常"],
+                            ["SF","SF"],
+                            ["アクション","アクション"],
+                            ["サスペンス","サスペンス"],
+                            ["ホラー","ホラー"],
+                            ["歴史・時代","歴史・時代"],
+                            ["その他","その他"]
+                        ], {}, { class:"form-select w-50" } %>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <%= novel.label :story, "ストーリー", class: "form-label" %>
+                    <%= novel.text_area :story, class: "form-control" %>
+                </div>
+                <div class="mb-4">
+                    <%= novel.label :thought, "感想", class: "form-label" %>
+                    <%= novel.text_area :thought, class: "form-control" %>
+                </div>
+                <div class="mb-4">
+                    <%= novel.submit "Post", class: "btn btn-success btn-lg w-100" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

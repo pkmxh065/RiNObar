@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row d-flex justify-content-center mt-5">
+        <div class="col-12 mt-2 mb-2">
+            <h1>Novels index</h1>
+        </div>
+        <div class="col-md-12 mt-2">
+            <table class="table w-100 table-hover">
+                <thead>
+                    <tr>
+                        <th class="px-4">Title</th>
+                        <th class="px-4">Genre</th>
+                        <th class="px-4">User</th>
+                        <th class="px-4"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @novels.each do |novel| %>
+                        <tr class="align-middle">
+                            <td class="px-4" style="white-space: nowrap;"><%= novel.title %></td>
+                            <td class="px-4" style="white-space: nowrap;"><%= novel.genre_main %>／<%= novel.genre_sub %></td>
+                            <td class="px-4" style="white-space: nowrap;"><%= novel.user.name %></td>
+                            <td class="px-4" style="white-space: nowrap;"><%= link_to "詳　細", novel_path(novel), data: { turbo: false }, class: "btn btn-info text-light" %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
