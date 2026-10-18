@@ -35,7 +35,7 @@ class NovelsController < ApplicationController
   def update
     @novel = Novel.find(params[:id])
     if @novel.update(novel_params)
-      redirect_to novels_path, notice: "投稿内容を変更しました。"
+      redirect_to novel_path(@novel), notice: "投稿内容を変更しました。"
     else
       render edit, status: :unprocessable_entity
     end
@@ -43,8 +43,9 @@ class NovelsController < ApplicationController
 
   def destroy
     @novel = Novel.find(params[:id])
+    @user = @novel.user
     if @novel.destroy
-      redirect_to novels_path, notice: "削除が完了しました。", status: :see_other
+      redirect_to user_path(@user), notice: "削除が完了しました。", status: :see_other
     end
   end
 
@@ -52,7 +53,7 @@ class NovelsController < ApplicationController
 
   def ensure_correct_user
     @novel = Novel.find(params[:id])
-    if @novel.user != current_user
+    if @novel.user != Current.user
       redirect_to user_path(current_user), notice: "別ユーザーの投稿のため編集できません。"
     end
   end
