@@ -56,7 +56,7 @@ class NovelsController < ApplicationController
   def ensure_correct_user
     @novel = Novel.find(params[:id])
     if @novel.user != Current.user
-      redirect_to user_path(current_user), notice: "別ユーザーの投稿のため編集できません。"
+      redirect_to novels_path(current_user), notice: "別ユーザーの投稿のため編集できません。"
     end
   end
 
