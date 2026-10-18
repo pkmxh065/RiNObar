@@ -38,7 +38,7 @@ class NovelsController < ApplicationController
       redirect_to novel_path(@novel), notice: "投稿内容を変更しました。"
     else
       flash.now[:alert] = @novel.errors.full_messages.join("、")
-      render edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 

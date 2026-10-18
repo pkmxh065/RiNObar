@@ -5,16 +5,6 @@
         </div>
         <div class="col-md-6 mt-2">
             <%= form_with model: @novel do |novel| %>
-            <% if @novel.errors.any? %>
-                        <div id="error_explanation">
-                            <h3><%= pluralize(@novel.errors.count, "error") %> prohibited this user from being saved:</h3>
-                            <ul>
-                                <% @novel.errors.full_messages.each do |msg| %>
-                                    <li><%= msg %></li>
-                                <% end %>
-                            </ul>
-                        </div>
-                    <% end %>
                 <div class="mb-4">
                     <%= novel.label :title, "タイトル", class: "form-label" %>
                     <%= novel.text_field :title, class: "form-control" %>
