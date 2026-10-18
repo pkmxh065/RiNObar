@@ -1,6 +1,7 @@
 class NovelsController < ApplicationController
   allow_unauthenticated_access only: [ :index, :show ]
-  before_action :ensure_correct_user, only: [ :edit, :update ]
+  before_action :require_login, only: [ :new, :create, :edit, :update, :destroy ]
+  before_action :ensure_correct_user, only: [ :edit, :update, :destroy ]
 
   def new
     @novel = Novel.new
