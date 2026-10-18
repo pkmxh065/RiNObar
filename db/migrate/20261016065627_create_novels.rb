@@ -1,7 +1,7 @@
 class CreateNovels < ActiveRecord::Migration[8.1]
   def change
     create_table :novels do |t|
-      t.integer :user_id
+      t.references :user, null: false, foreign_key: true
       t.integer :novel_id
       t.string :title
       t.string :genre
