@@ -26,6 +26,7 @@ class UsersController < ApplicationController
       redirect_to about_path, notice: "ユーザー登録が完了しました。"
     else
       @user.errors.full_messages
+      flash.now[:alert] = @user.errors.full_messages.join("、")
       render :new, status: :unprocessable_entity
     end
   end
@@ -39,6 +40,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user), notice: "ユーザー情報を変更しました。"
     else
+      flash.now[:alert] = @user.errors.full_messages.join("、")
       render "edit", status: :unprocessable_entity
     end
   end

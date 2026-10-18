@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     email_param = params[:email_address] || params[:email]
     if user = User.authenticate_by(email_address: email_param, password: params[:password])
       start_new_session_for user
-      redirect_to about_path, notice: "ログインしました。"
+      redirect_to user_path(user), notice: "ログインしました。"
     else
       redirect_to new_session_path, alert: "Try another email address or password."
     end
@@ -17,6 +17,6 @@ class SessionsController < ApplicationController
 
   def destroy
     terminate_session
-    redirect_to after_logout_url, notice: "ログアウトしました。"
+    redirect_to new_session_path, notice: "ログアウトしました。"
   end
 end
