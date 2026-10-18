@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  allow_unauthenticated_access only: [ :new, :create, :index ]
+  allow_unauthenticated_access only: [ :new, :create, :index, :withdraw_done ]
   before_action :require_login, only: [ :edit, :update, :unsubscribe, :withdraw ]
   before_action :ensure_correct_user, only: [ :edit, :update, :unsubscribe, :withdraw ]
 
