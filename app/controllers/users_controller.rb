@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       start_new_session_for @user
-      redirect_to about_path, notice: "ユーザー登録が完了しました。"
+      redirect_to user_path(@user), notice: "ユーザー登録が完了しました。"
     else
       @user.errors.full_messages
       flash.now[:alert] = @user.errors.full_messages.join("、")
