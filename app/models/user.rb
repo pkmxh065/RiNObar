@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :novels, dependent: :destroy
 
   validates :name, presence: true
-  validates :email_address, presence: true
+  validates :email_address, presence: true, uniqueness: true
   validates :password, presence: true, on: :create
   validates :password_confirmation, presence: true, on: :create
 
