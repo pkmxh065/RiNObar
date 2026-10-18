@@ -9,7 +9,18 @@ class ApplicationController < ActionController::Base
   before_action :require_authentication
   allow_browser versions: :modern
 
+  helper_method :current_user
+
   private
+
+  def current_user
+    @current_user ||= User.find_by(id: session[:user_id])
+  end
+
+  def require_login
+    redirect_to new_session_path unless current_user
+  end
+
   def after_authentication_url
     about_path
   end
