@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   allow_unauthenticated_access only: [ :new, :create, :index ]
-  before_action :ensure_correct_user, only: [ :edit, :update ]
+  before_action :require_login, only: [ :edit, :update, :unsubscribe, :withdraw ]
+  before_action :ensure_correct_user, only: [ :edit, :update, :unsubscribe, :withdraw ]
 
   def new
     @user = User.new
@@ -69,6 +70,9 @@ class UsersController < ApplicationController
 
   def ensure_correct_user
     @user = User.find(params[:id])
+    unless current_user
+      redirect_to new_session_path, notice: "ログインしてください。"
+    end
     if current_user != @user
       redirect_to user_path(current_user), notice: "別ユーザーの編集画面のためアクセスできません。"
     end
