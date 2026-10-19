@@ -65,7 +65,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-.
+
 gem "administrate"
 gem "kaminari","~> 1.2.1"
 gem "dotenv-rails"
