@@ -6,7 +6,7 @@
                 <%= f.select :search_target, [["ユーザー","user"], ["投稿","novel"]], { selected: params[:search_target] }, { class: "form-control" } %>
             </div>
             <div class="col-3">
-                <%= f.select :search_field, [["タイトル","title"], ["メインジャンル","genre_main"], ["サブジャンル","genre_sub"], ["ストーリー","story"]], { selected: params[:search_field] },
+                <%= f.select :search_field, [["ユーザー名","name"], ["タイトル","title"], ["メインジャンル","genre_main"], ["サブジャンル","genre_sub"], ["ストーリー","story"]], { selected: params[:search_field] },
                  { class: "form-control" } %>
             </div>
             <div class="col-auto">
