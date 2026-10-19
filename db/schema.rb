@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_17_003114) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_18_111323) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -40,7 +40,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_17_003114) do
   end
 
   create_table "novels", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.integer "novel_id"
     t.string "title"
     t.string "genre_main"
@@ -52,7 +52,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_17_003114) do
   end
 
   create_table "sessions", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id"
     t.string "ip_address"
     t.string "user_agent"
     t.datetime "created_at", null: false
@@ -67,12 +67,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_17_003114) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.text "introduction"
-    t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
