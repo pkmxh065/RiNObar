@@ -1,0 +1,51 @@
+<div class="container mt-4">
+    <h2>検索結果 (<%= @search_target == "user" ? "ユーザー" : "投稿" %>)</h2>
+    <% if @results.any? %>
+        <table class="table table-hover mt-3">
+            <thead>
+                <tr>
+                    <% if @search_target == "user" %>
+                        <th >Image</th>
+                        <th>Name</th>
+                        <th></th>
+                    <% else %>
+                        <th>Title</th>
+                        <th>Genre</th>
+                        <th>Story</th>
+                        <th></th>
+                    <% end %>
+                </tr>
+            </thead>
+            <tbody>
+                <% if @search_target == "user" %>
+                    <% @results.each do |user| %>
+                        <tr>
+                            <td  style="vertical-align: middle; white-space: nowrap;">
+                                <% if user.image.attached? %>
+                                    <%= image_tag user.image, size: "200x200", class: "img-thumbnall mb-2" %>
+                                <% else %>
+                                    <%= image_tag "no_image.png", size: "200x200" %>
+                                <% end %>
+                            </td>
+                            <td style="vertical-align: middle; white-space: nowrap;"><%= user.name %></td>
+                            <td style="vertical-align: middle; white-space: nowrap;"><%= link_to "詳　細", user_path(user), class: "btn btn-info text-light" %></td>
+                        </tr>
+                    <% end %>
+                <% else %>
+                    <% @results.each do |novel| %>
+                        <tr>
+                            <td class="px-4" style="vertical-align: middle; white-space: nowrap;"><%= novel.title %></td>
+                            <td class="px-4" style="vertical-align: middle; white-space: nowrap;"><%= novel.genre_main %><%= novel.genre_sub %></td>
+                            <td class="px-4" style="vertical-align: middle; white-space: nowrap;"><%= truncate(novel.story, lengh: 10, omission: "...") %></td>
+                            <td class="px-4" style="vertical-align: middle; white-space: nowrap;"><%= link_to "詳　細", novel_path(novel), data: { turbo: false }, class: "btn btn-info text-light" %></td>
+                        </tr>
+                    <% end %>
+                <% end %>
+            </tbody>
+        </table>
+    <% else %>
+        <div class="text-center mt-5 py-5">
+            <p>一致するデータが見つかりませんでした。</p>
+        </div>
+    <% end %>
+</div>
