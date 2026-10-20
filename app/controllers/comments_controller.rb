@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action require_login only: [ :create, :destroy ]
+  before_action :authenticate_user!, only: [ :create, :destroy ]
 
   def create
     @novel = Novel.find(params[:novel_id])
