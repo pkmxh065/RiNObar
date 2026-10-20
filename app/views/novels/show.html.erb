@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="row justify-content-between mt-4 w-100">
-        <div class=" d-flex col-md-12 align-middle">
+        <div class=" d-flex col-md-12 text-center">
             <div class="col-12 col-lg-5 text-center px-5">
                 <table class="table-responsive mx-4" style="table-layout: fixed; width: 100%">
                     <thead>
@@ -30,7 +30,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-12 col-lg-6 text-center px-5">
+            <div class="col-12 col-lg-5 text-center px-5">
                 <h3 class="text-center mb-3">Posts user</h3>
                 <table class="table-responsive" style="table-layout: fixed; width: 100%;">
                     <thead>
@@ -54,17 +54,23 @@
                 </table>
             </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-md-12 text-center">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-5 text-center">
                 <table>
                     <tbody>
                         <tr>
-                            <th class="px-3" style="vertical-align: middle; height: 150px;">Story</th>
-                            <td class="px-3" style="vertical-align: middle; height: 150px;"><%= @novel.story %></td>
+                            <th class="px-3" style="vertical-align: middle; height: 100px;">Story</th>
+                            <td class="px-3" style="vertical-align: middle; height: 100px;"><%= @novel.story %></td>
                         </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-5 text-center">
+                <table>
+                    <tbody>
                         <tr>
-                            <th class="px-3" style="vertical-align: middle; height: 150px;">Thought</th>
-                            <td class="px-3" style="vertical-align: middle; height: 150px;"><%= @novel.thought %></td>
+                            <th class="px-3" style="vertical-align: middle; height: 100px;">thought</th>
+                            <td class="px-3" style="vertical-align: middle; height: 100px;"><%= @novel.thought %></td>
                         </tr>
                     </tbody>
                 </table>
@@ -75,8 +81,7 @@
                 <%= link_to "編　集", edit_novel_path(@novel), class: "btn btn-secondary btn-lg" %>
                 <%= link_to "削　除", @novel, data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-lg" %>
             <% else %>
-                <%= link_to "レビュー", "#", class: "btn" %>
-                <%= link_to "ブックマーク", "#", class: "btn" %>
+                <%= render "comments/edit" %>
             <% end %>
         </div>
     </div>

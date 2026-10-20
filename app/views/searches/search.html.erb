@@ -35,7 +35,7 @@
                     <% @results.each do |novel| %>
                         <tr>
                             <td class="px-4" style="vertical-align: middle; white-space: nowrap;"><%= novel.title %></td>
-                            <td class="px-4" style="vertical-align: middle; white-space: nowrap;"><%= novel.genre_main %><%= novel.genre_sub %></td>
+                            <td class="px-4" style="vertical-align: middle; white-space: nowrap;"><%= novel.genre_main %>／<%= novel.genre_sub %></td>
                             <td class="px-4" style="vertical-align: middle; white-space: nowrap;"><%= truncate(novel.story, lengh: 10, omission: "...") %></td>
                             <td class="px-4" style="vertical-align: middle; white-space: nowrap;"><%= link_to "詳　細", novel_path(novel), data: { turbo: false }, class: "btn btn-info text-light" %></td>
                         </tr>

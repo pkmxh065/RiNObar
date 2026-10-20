@@ -15,6 +15,8 @@ class NovelsController < ApplicationController
     @novel = Novel.find(params[:id])
     session_record = find_session_by_cookie
     @current_user = session_record&.user
+    @comments = @novel.comments.includes(:user)
+    @comment = Comment.new
   end
 
   def edit

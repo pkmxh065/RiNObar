@@ -2,12 +2,12 @@
     <div class="col-md-12 mt-3 d-flex justify-content-center">
         <%= form_with url: search_path, method: :get, local: true,
                 html: { class: "d-flex align-items-center gap-2 justify-content-center" } do |f| %>
-            <div class="col-2">
-                <%= f.select :search_target, [["ユーザー","user"], ["投稿","novel"]], { selected: params[:search_target] }, { class: "form-control" } %>
+            <div class="col-3">
+                <%= f.select :search_target, [["ユーザー","user"], ["投稿","novel"]], { selected: params[:search_target] }, { class: "search-select form-control" } %>
             </div>
             <div class="col-3">
-                <%= f.select :search_field, [["ユーザー名","name"], ["タイトル","title"], ["メインジャンル","genre_main"], ["サブジャンル","genre_sub"], ["ストーリー","story"]], { selected: params[:search_field] },
-                 { class: "form-control" } %>
+                <%= f.select :search_field, [["ー","ー"], ["タイトル","title"], ["メインジャンル","genre_main"], ["サブジャンル","genre_sub"], ["ストーリー","story"]], { selected: params[:search_field] },
+                 { class: "search-select form-control" } %>
             </div>
             <div class="col-auto">
                 <%= f.text_field :search_word, value: params[:search_word], placeholder: "ワードを入力", class: "form-control" %>
