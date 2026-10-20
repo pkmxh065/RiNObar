@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_one_attached :image
   has_many :sessions, dependent: :destroy
   has_many :novels, dependent: :destroy
-  has_many :comment, dependet: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :name, presence: true
   validates :email_address, presence: true, uniqueness: true
