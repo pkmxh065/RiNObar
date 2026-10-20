@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   end
   resource :session
   resources :passwords, param: :token
-  resources :novels, only: [:new, :index, :show, :edit, :create, :update, :destroy]
+  resources :novels, only: [:new, :index, :show, :edit, :create, :update, :destroy] do
+    resources :comments, only: [:create, :destroy]
+  end
   get "search", to: "searches#search"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
