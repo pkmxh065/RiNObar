@@ -11,7 +11,7 @@
  body {
     background-image: asset-url("hoge.jpg");
  }
- select {
+ .search-select {
    appearance: auto !important;
    -webkit-appearance: auto !important;
    -moz-appearance: auto !important;

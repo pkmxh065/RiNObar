@@ -4,52 +4,56 @@
             <h1 class="text-center">Novel edit</h1>
         </div>
         <div class="col-md-6 mt-2">
-            <%= form_with model: @novel do |novel| %>
-                <div class="mb-4">
-                    <%= novel.label :title, "タイトル", class: "form-label" %>
-                    <%= novel.text_field :title, class: "form-control" %>
-                </div>
-                <div class="w-100 mb-4">
-                    <%= novel.label :genre, "ジャンル", class: "form-label" %><br>
-                    <div class="d-flex gap-2 w-100">
-                        <%= novel.select :genre_main, [
-                            ["異世界", "異世界"],
-                            ["ラブコメ", "ラブコメ"],
-                            ["バトル","バトル"],
-                            ["ミステリー","ミステリー"],
-                            ["その他","その他"]
-                        ], {}, { class: "form-select w-50" } %>
-                        <%= novel.select :genre_sub, [
-                            ["ファンタジー","ファンタジー"],
-                            ["転生","転生"],
-                            ["学園","学園"],
-                            ["日常","日常"],
-                            ["SF","SF"],
-                            ["アクション","アクション"],
-                            ["サスペンス","サスペンス"],
-                            ["ホラー","ホラー"],
-                            ["歴史・時代","歴史・時代"],
-                            ["その他","その他"]
-                        ], {}, { class:"form-select w-50" } %>
+            <% if @current_user.present? && @current_user.id == @novel.user_id %>
+                <%= form_with model: @novel do |novel| %>
+                    <div class="mb-4">
+                        <%= novel.label :title, "タイトル", class: "form-label" %>
+                        <%= novel.text_field :title, class: "form-control" %>
                     </div>
-                </div>
-                <div class="mb-4">
-                    <%= novel.label :story, "ストーリー", class: "form-label" %>
-                    <%= novel.text_area :story, class: "form-control" %>
-                </div>
-                <div class="mb-4">
-                    <%= novel.label :thought, "感想", class: "form-label" %>
-                    <%= novel.text_area :thought, class: "form-control" %>
-                </div>
-                <div class="d-flex justify-content-center mt-4 mb-5 gap-3">
-                    <% if @current_user.present? && @current_user.id == @novel.user_id %>
-                        <%= novel.submit "更　新", class: "btn btn-secondary btn-lg" %>
-                        <%= link_to "削　除", @novel, data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-lg" %>
-                    <% else %>
-                        <%= link_to "レビュー", "#", class: "btn" %>
-                        <%= link_to "ブックマーク", "#", class: "btn" %>
-                    <% end %>
-                </div>
+                    <div class="w-100 mb-4">
+                        <%= novel.label :genre, "ジャンル", class: "form-label" %><br>
+                        <div class="d-flex gap-2 w-100">
+                            <%= novel.select :genre_main, [
+                                ["異世界", "異世界"],
+                                ["ラブコメ", "ラブコメ"],
+                                ["バトル","バトル"],
+                                ["ミステリー","ミステリー"],
+                                ["その他","その他"]
+                            ], {}, { class: "form-select w-50" } %>
+                            <%= novel.select :genre_sub, [
+                                ["ファンタジー","ファンタジー"],
+                                ["転生","転生"],
+                                ["学園","学園"],
+                                ["日常","日常"],
+                                ["SF","SF"],
+                                ["アクション","アクション"],
+                                ["サスペンス","サスペンス"],
+                                ["ホラー","ホラー"],
+                                ["歴史・時代","歴史・時代"],
+                                ["その他","その他"]
+                            ], {}, { class:"form-select w-50" } %>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <%= novel.label :story, "ストーリー", class: "form-label" %>
+                        <%= novel.text_area :story, class: "form-control" %>
+                    </div>
+                    <div class="mb-4">
+                        <%= novel.label :thought, "感想", class: "form-label" %>
+                        <%= novel.text_area :thought, class: "form-control" %>
+                    </div>
+                    <div class="d-flex justify-content-center mt-4 mb-5 gap-3">
+                        <% if @current_user.present? && @current_user.id == @novel.user_id %>
+                            <%= novel.submit "更　新", class: "btn btn-secondary btn-lg" %>
+                            <%= link_to "削　除", @novel, data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-lg" %>
+                        <% else %>
+                            <%= link_to "レビュー", "#", class: "btn" %>
+                            <%= link_to "ブックマーク", "#", class: "btn" %>
+                        <% end %>
+                    </div>
+                <% end %>
+            <% else %>
+                
             <% end %>
         </div>
     </div>

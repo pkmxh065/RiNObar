@@ -6,9 +6,9 @@ class CommentsController < ApplicationController
     @comment = @novel.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      redirectt_to @novel, notice: "コメントを投稿しました。"
+      redirect_to @novel, notice: "コメントを投稿しました。"
     else
-      render @novel, alert: "コメントの投稿に失敗しました。"
+      redirect_to @novel, alert: "コメントの投稿に失敗しました。"
     end
   end
 
