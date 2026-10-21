@@ -21,7 +21,7 @@
                         </td>
                         <td><%= comment.body %></td>
                         <td>
-                            <% if @current_user.present? && @current_user.id == @comment.user_id %>
+                            <% if @current_user.present? && @current_user.id == comment.user_id %>
                                 <%= button_to "削　除", novel_comment_path(@novel, comment), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger p-2" %>
                             <% else %>
                                 コメント数：<%= @novel.comments.count %>
