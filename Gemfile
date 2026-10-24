@@ -67,7 +67,7 @@ end
 
 
 gem "administrate"
-gem "kaminari","~> 1.2.1"
+gem "kaminari","~> 1.3.0"
 gem "dotenv-rails"
 group :production do
   gem "mysql2"
