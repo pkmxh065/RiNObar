@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_18_111323) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_25_021851) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,6 +39,33 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_18_111323) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "admins", force: :cascade do |t|
+    t.string "email_address"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "body"
+    t.integer "user_id", null: false
+    t.integer "novel_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["novel_id"], name: "index_comments_on_novel_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "novel_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["novel_id"], name: "index_likes_on_novel_id"
+    t.index ["user_id", "novel_id"], name: "index_likes_on_user_id_and_novel_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "novels", force: :cascade do |t|
     t.bigint "user_id"
     t.integer "novel_id"
@@ -49,6 +76,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_18_111323) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "genre_sub"
+    t.index ["user_id"], name: "index_novels_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -57,6 +85,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_18_111323) do
     t.string "user_agent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "admin_id"
+    t.index ["admin_id"], name: "index_sessions_on_admin_id"
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
@@ -71,11 +101,18 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_18_111323) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.boolean "admin"
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "novels"
+  add_foreign_key "comments", "users"
+  add_foreign_key "likes", "novels"
+  add_foreign_key "likes", "users"
+  add_foreign_key "novels", "users"
+  add_foreign_key "sessions", "admins"
   add_foreign_key "sessions", "users"
 end

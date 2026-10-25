@@ -7,19 +7,25 @@
             <table class="table w-100 table-hover">
                 <thead>
                     <tr>
-                        <th class="px-4">Title</th>
-                        <th class="px-4">Genre</th>
-                        <th class="px-4">User</th>
-                        <th class="px-4"></th>
+                        <th class="px-4" style="text-align: center;">Title</th>
+                        <th class="px-4" style="text-align: center;">Genre</th>
+                        <th class="px-4" style="text-align: center;">User</th>
+                        <th class="px-4" style="text-align: center;">いいね</th>
+                        <th class="px-4" style="text-align: center;">Comment</th>
+                        <th class="px-4" style="text-align: center;"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <% @novels.each do |novel| %>
                         <tr class="align-middle">
-                            <td class="px-4" style="white-space: nowrap;"><%= novel.title %></td>
-                            <td class="px-4" style="white-space: nowrap;"><%= novel.genre_main %>／<%= novel.genre_sub %></td>
-                            <td class="px-4" style="white-space: nowrap;"><%= novel.user.name %></td>
-                            <td class="px-4" style="white-space: nowrap;"><%= link_to "詳　細", novel_path(novel), data: { turbo: false }, class: "btn btn-info text-light" %></td>
+                            <td class="px-4" style="text-align: center; white-space: nowrap;"><%= novel.title %></td>
+                            <td class="px-4" style="text-align: center; white-space: nowrap;"><%= novel.genre_main %>／<%= novel.genre_sub %></td>
+                            <td class="px-4" style="text-align: center; white-space: nowrap;"><%= novel.user.name %></td>
+                            <td class="px-4" style="text-align: center; white-space: nowrap;">
+                                <%= render "novels/like", novel: novel %>
+                            </td>
+                            <td class="px-4" style="text-align: center; white-space: nowrap;"><%= novel.comments.count %></td>
+                            <td class="px-4" style="text-align: center; white-space: nowrap;"><%= link_to "詳　細", novel_path(novel), class: "btn btn-info text-light" %></td>
                         </tr>
                     <% end %>
                 </tbody>

@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="col-lg-12 mt-5">
+    <h1>ユーザー管理一覧</h1>
+  </div>
+  
+  <table class="table mt-5" style="border-collapse: collapse; width: 100%; text-align: left;">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>ユーザー名</th>
+        <th>メールアドレス</th>
+        <th>登録日</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td style="vertical-align: middle;"><%= user.id %></td>
+          <td style="vertical-align: middle;"><%= user.name %></td>
+          <td style="vertical-align: middle;"><%= user.email_address %></td>
+          <td><%= l user.created_at, format: :short %></td>
+          <td style="vertical-align: middle;">
+            <%= link_to "詳　細", admin_user_path(user), class: "btn btn-info text-light" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <div class="d-flex mt-3 gap-5">
+    <%= paginate @users %>
+    <%= link_to "ダッシュボードへ戻る", admin_dashboard_path %>
+  </div>
+</div>

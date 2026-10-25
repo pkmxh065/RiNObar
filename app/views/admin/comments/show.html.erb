@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="col-lg-12 d-flex justify-content-center mt-5">
+    <h1>コメント管理一覧</h1>
+  </div>
+  
+  <div class="col-lg-10 mt-3 py-2">
+    <table class="table" style="border-collapse: collapse; width: 100%; text-align: left;">
+      <thead>
+        <tr class="text-center">
+          <th>Title</th>
+          <th>Genre</th>
+          <th>投稿日時</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="text-center">
+            <td style="vertical-align: middle;"><%= @comment&.novel&.title %></td>
+            <td style="vertical-align: middle;">
+                <%= @comment&.novel&.genre_main %>／<%= @comment&.novel&.genre_sub %>
+            </td>
+            <td style="vertical-align: middle;">
+                <%= l @comment.created_at, format: :short if @comment.present? %>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="text-center flex-wrap mt-3">
+    <%= truncate(@comment&.body, length: 50) %>
+  </div>
+  <div class="text-center mt-4 py-3">
+     <%= link_to "削　除", admin_comment_path(@comment), data: { turbo_method: :delete, turbo_confirm: "本当にこのコメントを削除しますか？" }, class: "btn btn-danger" %>
+  </div>
+  <div class="action mt-4">
+    <%= link_to "一覧へ戻る", admin_comments_path %>
+  </div>
+</div>

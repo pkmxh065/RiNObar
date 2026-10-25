@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :sessions, dependent: :destroy
   has_many :novels, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_novels, through: :likes, source: :novel
 
   validates :name, presence: true
   validates :email_address, presence: true, uniqueness: true

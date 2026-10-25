@@ -1,0 +1,13 @@
+<%= turbo_frame_tag "like-frame-#{novel.id}" do %>
+    <% if current_user && novel.liked_by?(current_user) %>
+        <%= link_to novel_likes_path(novel), data: { turbo_method: :delete }, class: "text-decoration-none" do %>
+            ♥
+        <% end %>
+        ： <%= novel.likes.count %>
+    <% else %>
+        <%= link_to novel_likes_path(novel), data: { turbo_method: :post }, class: "text-decoration-none" do %>
+            ♡
+        <% end %>
+        ： <%= novel.likes.count %>
+    <% end %>
+<% end %>

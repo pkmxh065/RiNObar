@@ -1,5 +1,5 @@
 <div class="col-12 d-flex">
-    <div class="col-lg-4">
+    <div class="col-lg-4 px-3">
         <table class="table">
             <thead>
                 <tr>
@@ -32,10 +32,10 @@
             </tbody>
         </table>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 px-3">
         <%=  form_with(model: [@novel, @comment], local: true) do |f| %>
             <%= f.label :body, "Comment New" %><br>
-            <%= f.text_area :body, row: 3, class: "mt-1" %><br>
+            <%= f.text_area :body, row: 3, class: "mt-1 w-100" %><br>
             <%= f.submit "投　稿" %>
         <% end %>
     </div>

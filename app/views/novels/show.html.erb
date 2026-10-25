@@ -21,7 +21,9 @@
                         </tr>
                         <tr>
                             <th class="py-3 px-4">いいね</th>
-                            <td class="py-3 px-4">♥</td>
+                            <td class="py-3 px-4">
+                                <%= render "novels/like", novel: @novel %>
+                            </td>
                         </tr>
                         <tr>
                             <th class="py-3 px-4">評価</th>
