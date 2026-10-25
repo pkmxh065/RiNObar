@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
   root to: "homes#top"
   get "about", to: "homes#about", as: "about"
+  namespace :admin do
+    get "login", to: "sessions#new", as: "login"
+    post "login", to: "sessions#create"
+    post "/", to: "sessions#create"
+    root to: "sessions#new"
+
+    get "dashboard", to: "dashboard#index", as: "dashboard"
+    resources :users, only: [:index, :show, :destroy]
+    resources :comments, only: [:index, :show, :destroy]
+  end
+  resource :session
+  resources :passwords, param: :token
   resources :users, only: [:new, :index, :show, :edit, :create, :update, :destroy] do
     member do
       get :unsubscribe
@@ -10,10 +22,9 @@ Rails.application.routes.draw do
       get :withdraw_done
     end
   end
-  resource :session
-  resources :passwords, param: :token
   resources :novels, only: [:new, :index, :show, :edit, :create, :update, :destroy] do
     resources :comments, only: [:create, :destroy]
+    resource :likes, only: [:create, :destroy]
   end
   get "search", to: "searches#search"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

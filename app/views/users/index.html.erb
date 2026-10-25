@@ -15,7 +15,7 @@
                 <tbody>
                     <% @users.each do |user| %>
                         <tr>
-                            <td>
+                            <td style="vertical-align: middle;">
                                 <% if user.image.attached? %>
                                     <%= image_tag user.image, size: "200x200", class: "img-thumbnall mb-2" %>
                                 <% else %>

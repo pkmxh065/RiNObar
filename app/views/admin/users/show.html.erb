@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="col-lg-12 justify-content-center mt-3 py-2">
+        <h1>ユーザー詳細</h1>
+    </div>
+    
+    <div class="col-lg-12 justify-content-center mt-3 py-2">
+        <div class="col-lg-12 text-center py-4">
+            <p>名前: <%= @user.name %></p>
+        </div>
+        <div class="col-lg-12 text-center py-2">
+            <p>メール: <%= @user.email_address %></p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-lg-10">
+            <h3>投稿したNovels</h3>
+        </div>
+
+        <% if @user.novels.any? %>
+            <table class="table">
+                <thead>
+                    <tr class="text-center">
+                        <th>Title</th>
+                        <th>Genre</th>
+                        <th>Story</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @user.novels.each do |novel| %>
+                        <tr class="text-center">
+                            <td><%= novel.title %></td>
+                            <td><%= novel.genre_main %>／<%= novel.genre_sub %></td>
+                            <td><%= truncate(novel.story, length: 15) %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        <% else %>
+            <p class="text-center"><span>投稿されてません。</span></p>
+        <% end %>
+    </div>
+    
+    <div class="action text-center py-4">
+        <%= link_to "削除", admin_user_path(@user), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class: "btn btn-danger" %>
+    </div>
+    <div class="action d-flex text-center gap-3 mt-3">
+        <%= link_to "一覧へ戻る", admin_users_path %>
+    </div>
+</div>

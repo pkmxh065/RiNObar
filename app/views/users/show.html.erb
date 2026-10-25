@@ -29,52 +29,36 @@
                 </div>
             </div>
             <div class="col-lg-9 ps-md-5">
-                <div class="row">
+                <div class="row mt-5">
                     <div class="col-md-6 mb-4">
-                        <%= link_to about_path, class: "text-decoration-none text-dark" do %>
-                            <div class="border rounded p-4 text-center bg-light w-100 d-flex flex-column" style="min-height: 150px; display: flex; aligin-items:center; justify-content: center;">
-                                <h3>About</h3><br>
-                                <p>—　about　—</p>
+                        <%= link_to new_novel_path, class: "text-decoration-none text-dark h-100 d-block" do %>
+                            <div class="border rounded p-4 text-center bg-light h-100 d-flex flex-column" style="min-height: 150px; display: flex; aligin-items:center; justify-content: center;">
+                                <h3 class="text-nowrap" style="font-size: calc(1.2rem + 0.5vw);">Posts</h3><br>
+                                <p class="text-nowrap mb-0" style="font-size: calc(0.6rem + 0.2vw);">—　投稿　—</p>
                             </div>
                         <% end %>
                     </div>
                     <div class="col-md-6 mb-4">
-                        <%= link_to new_novel_path, class: "text-decoration-none text-dark" do %>
-                            <div class="border rounded p-4 text-center bg-light w-100 d-flex flex-column" style="min-height: 150px; display: flex; aligin-items:center; justify-content: center;">
-                                <h3>Posts</h3><br>
-                                <p>—　投稿　—</p>
+                        <%= link_to novels_path, class: "text-decoration-none text-dark h-100 d-block" do %>
+                            <div class="border rounded p-4 text-center bg-light h-100 d-flex flex-column" style="min-height: 150px; display: flex; aligin-items:center; justify-content: center;">
+                                <h3 class="text-nowrap" style="font-size: calc(1.2rem + 0.5vw);">Novels</h3><br>
+                                <p class="text-nowrap mb-0" style="font-size: calc(0.6rem + 0.2vw);">—　ライトノベル　—</p>
                             </div>
                         <% end %>
                     </div>
                     <div class="col-md-6 mb-4">
-                        <%= link_to novels_path, class: "text-decoration-none text-dark" do %>
-                            <div class="border rounded p-4 text-center bg-light w-100 d-flex flex-column" style="min-height: 150px; display: flex; aligin-items:center; justify-content: center;">
-                                <h3>Novels</h3><br>
-                                <p>—　ライトノベル　—</p>
+                        <%= link_to "#", class: "text-decoration-none text-dark h-100 d-block" do %>
+                            <div class="border rounded p-4 text-center bg-light h-100 d-flex flex-column" style="min-height: 150px; display: flex; aligin-items:center; justify-content: center;">
+                                <h3 class="text-nowrap" style="font-size: calc(1.2rem + 0.5vw);">Favorite</h3><br>
+                                <p class="text-nowrap mb-0" style="font-size: calc(0.6rem + 0.2vw);">—　お気に入り　―</p>
                             </div>
                         <% end %>
                     </div>
                     <div class="col-md-6 mb-4">
-                        <%= link_to "#", class: "text-decoration-none text-dark" do %>
-                            <div class="border rounded p-4 text-center bg-light w-100 d-flex flex-column" style="min-height: 150px; display: flex; aligin-items:center; justify-content: center;">
-                                <h3>Review</h3><br>
-                                <p>—　レビュー　—</p>
-                            </div>
-                        <% end %>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <%= link_to "#", class: "text-decoration-none text-dark" do %>
-                            <div class="border rounded p-4 text-center bg-light w-100 d-flex flex-column" style="min-height: 150px; display: flex; aligin-items:center; justify-content: center;">
-                                <h3>Favorite</h3><br>
-                                <p>—　お気に入り　―</p>
-                            </div>
-                        <% end %>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <%= link_to unsubscribe_user_path(@user), class: "text-decoration-none text-dark" do %>
-                            <div class="border rounded p-4 text-center bg-light w-100 d-flex flex-column" style="min-height: 150px; display: flex; aligin-items:center; justify-content: center;">
-                                <h3>Leave</h3><br>
-                                <p>—　退会　—</p>
+                        <%= link_to unsubscribe_user_path(@user), class: "text-decoration-none text-dark h-100 d-block" do %>
+                            <div class="border rounded p-4 text-center bg-light h-100 d-flex flex-column" style="min-height: 150px; display: flex; aligin-items:center; justify-content: center;">
+                                <h3 class="text-nowrap" style="font-size: calc(1.2rem + 0.5vw);">Leave</h3><br>
+                                <p class="text-nowrap mb-0" style="font-size: calc(0.6rem + 0.2vw);">—　退会　—</p>
                             </div>
                         <% end %>
                     </div>
