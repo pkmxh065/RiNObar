@@ -1,12 +1,18 @@
 <div class="container">
+    <div class="col-lg-12 mt-5">
+        <p>Login：<%= Current.admin_session&.email_address %></p>
+    </div>
     <div class="col-lg-12 d-flex justify-content-center mt-5 py-2">
         <h1>管理者ダッシュボード</h1>
     </div>
     
-    <div class="admin-menu text-center mt-3 py-2">
+    <div class="admin-menu text-center mt-5 py-2">
       <ul style="list-style: none;">
         <li><%= link_to "ユーザー管理一覧", admin_users_path %></li>
         <li><%= link_to "コメント管理一覧", admin_comments_path %></li>
       </ul>
+    </div>
+    <div class="text-center mt-5 py-5">
+      <%= link_to "Log Out", admin_logout_path, data: { turbo_method: :delete }, class: "btn btn-secondary" %>
     </div>
 </div>

@@ -19,9 +19,9 @@
           <td style="vertical-align: middle;"><%= user.id %></td>
           <td style="vertical-align: middle;"><%= user.name %></td>
           <td style="vertical-align: middle;"><%= user.email_address %></td>
-          <td><%= l user.created_at, format: :short %></td>
+          <td style="vertical-align: middle;"><%= l user.created_at, format: :short %></td>
           <td style="vertical-align: middle;">
-            <%= link_to "詳　細", admin_user_path(user), class: "btn btn-info text-light" %>
+            <%= link_to "詳　細", admin_user_path(user), class: "btn  btn-info text-light" %>
           </td>
         </tr>
       <% end %>

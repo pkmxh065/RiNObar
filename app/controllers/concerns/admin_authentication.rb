@@ -15,7 +15,7 @@ module AdminAuthentication
   def require_admin_authentication
     unless authenticated_admin?
       session[:admin_return_to_after_authentication] = request.url
-      redirect_to new_admin_session_path, alert: "管理者ログインが必要です。"
+      redirect_to admin_login_path, alert: "管理者ログインが必要です。"
     end
   end
 
