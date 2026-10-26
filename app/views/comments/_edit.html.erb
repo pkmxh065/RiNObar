@@ -11,16 +11,18 @@
             <tbody>
                 <% @comments.each do |comment| %>
                     <tr>
-                        <td>
-                            <% if comment.user.image.attached? %>
-                                <%= image_tag comment.user.image, size: "80x80" %><br>
-                            <% else %>
-                                <%= image_tag "no_image.png", size: "80x80" %><br>
+                        <td style="vertical-align: middle;">
+                            <%= link_to user_path(comment.user) do %>
+                                <% if comment.user.image.attached? %>
+                                    <%= image_tag comment.user.image, size: "50x50" %><br>
+                                <% else %>
+                                    <%= image_tag "no_image.png", size: "50x50" %><br>
+                                <% end %>
+                                <%= comment.user.name %>
                             <% end %>
-                            <%= comment.user.name %>
                         </td>
-                        <td><%= comment.body %></td>
-                        <td>
+                        <td style="vertical-align: middle;"><%= comment.body %></td>
+                        <td style="vertical-align: middle;">
                             <% if @current_user.present? && @current_user.id == comment.user_id %>
                                 <%= button_to "削　除", novel_comment_path(@novel, comment), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger p-2" %>
                             <% else %>

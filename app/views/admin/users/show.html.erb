@@ -29,9 +29,9 @@
                 <tbody>
                     <% @user.novels.each do |novel| %>
                         <tr class="text-center">
-                            <td><%= novel.title %></td>
-                            <td><%= novel.genre_main %>／<%= novel.genre_sub %></td>
-                            <td><%= truncate(novel.story, length: 15) %></td>
+                            <td style="vertical-align: middle;"><%= novel.title %></td>
+                            <td style="vertical-align: middle;"><%= novel.genre_main %>／<%= novel.genre_sub %></td>
+                            <td style="vertical-align: middle;"><%= truncate(novel.story, length: 15) %></td>
                         </tr>
                     <% end %>
                 </tbody>
