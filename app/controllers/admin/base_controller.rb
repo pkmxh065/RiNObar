@@ -1,9 +1,11 @@
 class Admin::BaseController < ApplicationController
-  before_action :require_admin
+  skip_before_action :require_authentication, raise: false
 
-    private
+  include AdminAuthentication
 
-    def require_admin
-      redirect_to login_path, alert: "ログインしてください" unless Current.user
-    end
+  private
+
+  def require_admin
+    redirect_to login_path, alert: "ログインしてください" unless Current.user
+  end
 end

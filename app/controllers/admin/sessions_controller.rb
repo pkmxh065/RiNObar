@@ -1,11 +1,14 @@
 class Admin::SessionsController < ApplicationController
+  skip_before_action :require_authentication, raise: false
+  include AdminAuthentication
+  skip_before_action :require_admin_authentication, only: [ :new, :create ], raise: false
+
   def new
   end
 
   def create
-    admin = Admin.find_by(email_address: params[:email_address])
-    if admin&.authenticate(params[:password])
-      session[:admin_id] = admin.id
+    if admin = Admin.authenticate_by(email_address: params[:email_address], password: params[:password])
+      start_new_admin_session_for(admin)
       redirect_to "/admin/dashboard"
     else
       flash.now[:alert] = "メールアドレスまたはパスワードが違います"
@@ -14,7 +17,7 @@ class Admin::SessionsController < ApplicationController
   end
 
   def destroy
-    session.delete(:admin_id)
-    redirect_to admin_login_path
+    terminate_admin_session
+    redirect_to new_admin_login_path
   end
 end
